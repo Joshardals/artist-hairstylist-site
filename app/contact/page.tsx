@@ -18,13 +18,28 @@ export default function ContactPage() {
     e.preventDefault();
     setStatus("sending");
 
-    // We'll integrate Formspree in Phase 5
-    // For now, just simulate submission
-    setTimeout(() => {
-      setStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      setTimeout(() => setStatus("idle"), 3000);
-    }, 1000);
+    try {
+      // Replace with your actual Formspree endpoint
+      const response = await fetch("https://formspree.io/f/xjkprrzn", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 5000);
+      }
+    } catch (error) {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 5000);
+    }
   };
 
   const handleChange = (
@@ -219,15 +234,19 @@ export default function ContactPage() {
                 </Button>
 
                 {status === "success" && (
-                  <p className="text-green-600 text-center font-medium">
-                    ✓ Message sent successfully! We'll get back to you soon.
-                  </p>
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <p className="text-green-700 text-center font-medium">
+                      ✓ Message sent successfully! We'll get back to you soon.
+                    </p>
+                  </div>
                 )}
 
                 {status === "error" && (
-                  <p className="text-red-600 text-center font-medium">
-                    ✗ Something went wrong. Please try again.
-                  </p>
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <p className="text-red-700 text-center font-medium">
+                      ✗ Something went wrong. Please try again.
+                    </p>
+                  </div>
                 )}
               </form>
             </div>

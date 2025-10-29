@@ -1,5 +1,4 @@
 import ServiceCard from "@/components/ServiceCard";
-import Button from "@/components/Button";
 import { hairServices } from "@/data/hairServices";
 
 export default function HairPage() {
@@ -29,28 +28,37 @@ export default function HairPage() {
         </div>
       </section>
 
-      {/* Booking Section */}
+      {/* Booking Section with Calendly */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 text-center">
-            <h2 className="text-3xl font-heading font-bold text-gray-900 mb-4">
-              Ready to Book?
-            </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Schedule your appointment using our easy booking system. Choose
-              your service, pick a time, and we'll take care of the rest!
-            </p>
-
-            {/* Calendly Embed - We'll add this in Phase 5 */}
-            <div className="bg-gray-100 rounded-lg p-12 mb-6">
-              <p className="text-gray-500 italic">
-                📅 Booking calendar will be embedded here
+          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-heading font-bold text-gray-900 mb-4">
+                Ready to Book?
+              </h2>
+              <p className="text-lg text-gray-600">
+                Schedule your appointment using our easy booking system. Choose
+                your service, pick a time, and we'll take care of the rest!
               </p>
             </div>
 
-            <p className="text-sm text-gray-500">
+            {/* Calendly Embed */}
+            <div className="calendly-embed">
+              <iframe
+                src="https://calendly.com/joshuabamidele219/hair-consultation"
+                width="100%"
+                height="700"
+                frameBorder="0"
+                className="rounded-lg"
+                title="Schedule Appointment"
+              />
+            </div>
+
+            <p className="text-sm text-gray-500 text-center mt-6">
               Prefer to call? Reach us at{" "}
-              <span className="font-semibold">(555) 123-4567</span>
+              <span className="font-semibold text-gray-700">
+                (555) 123-4567
+              </span>
             </p>
           </div>
         </div>
@@ -63,7 +71,6 @@ export default function HairPage() {
             Our Work
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {/* Placeholder gallery - we can add real images later */}
             {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
               <div
                 key={i}

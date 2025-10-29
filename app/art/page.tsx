@@ -19,6 +19,16 @@ export default function ArtPage() {
       ? artProducts
       : artProducts.filter((p) => p.category === filter);
 
+  const handleBuyNow = (product: ArtProduct) => {
+    // For prototype: You can add real product URLs in your data file
+    // Example: window.open(product.buyLink, '_blank');
+
+    // For now, show an alert (or you can link to a demo Gumroad/Printful page)
+    alert(
+      `Purchasing: ${product.title}\n\nIn production, this would redirect to the payment page.`
+    );
+  };
+
   return (
     <div>
       {/* Header */}
@@ -109,16 +119,22 @@ export default function ArtPage() {
               <span className="text-3xl font-bold text-accent-600">
                 ${selectedProduct.price}
               </span>
-              <span className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+              <span className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full capitalize">
                 {selectedProduct.category}
               </span>
             </div>
-            <Button variant="primary" size="lg" fullWidth>
+            <Button
+              variant="primary"
+              size="lg"
+              fullWidth
+              onClick={() => handleBuyNow(selectedProduct)}
+            >
               Buy Now
             </Button>
-            <p className="text-xs text-gray-500 text-center mt-4">
-              Secure checkout via our print-on-demand partner
-            </p>
+            <div className="mt-4 flex items-center justify-center gap-2 text-xs text-gray-500">
+              <span>🔒</span>
+              <span>Secure checkout via our print-on-demand partner</span>
+            </div>
           </div>
         )}
       </Modal>
