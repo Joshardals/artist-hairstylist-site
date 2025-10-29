@@ -1,26 +1,60 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Primary - Artistic/Creative side */
+  --color-primary-50: #fef3f2;
+  --color-primary-100: #fee5e2;
+  --color-primary-200: #fecfca;
+  --color-primary-300: #fdaea5;
+  --color-primary-400: #fa8070;
+  --color-primary-500: #f15b47; /* Main primary color */
+  --color-primary-600: #de3b25;
+  --color-primary-700: #bb2f1b;
+  --color-primary-800: #9a2b1a;
+  --color-primary-900: #80291c;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Secondary - Professional/Hair services side */
+  --color-secondary-50: #f5f7fa;
+  --color-secondary-100: #ebeef3;
+  --color-secondary-200: #d2dae5;
+  --color-secondary-300: #abbccf;
+  --color-secondary-400: #7e98b5;
+  --color-secondary-500: #5f7a9d;
+  --color-secondary-600: #4a6083; /* Main secondary color */
+  --color-secondary-700: #3d4e6a;
+  --color-secondary-800: #354359;
+  --color-secondary-900: #2f3a4b;
+
+  /* Accent - Warm/Gold */
+  --color-accent-50: #fefce8;
+  --color-accent-100: #fef9c3;
+  --color-accent-200: #fef08a;
+  --color-accent-300: #fde047;
+  --color-accent-400: #facc15;
+  --color-accent-500: #eab308; /* Main accent color */
+  --color-accent-600: #ca8a04;
+  --color-accent-700: #a16207;
+  --color-accent-800: #854d0e;
+  --color-accent-900: #713f12;
+
+  /* Fonts Family */
+  --font-heading: var(--font-playfair), "serif";
+  --font-body: var(--font-inter), "serif";
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-white text-gray-900 font-body;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-heading;
+}
+
+.text-balance {
+  text-wrap: balance;
 }
